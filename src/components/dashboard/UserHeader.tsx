@@ -1,7 +1,6 @@
 import React from 'react';
 import { ArrowRightOnRectangleIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import { Button } from '../ui/Button';
-import { GlobalRefreshButton } from '../refresh/GlobalRefreshButton';
 import type { User } from '../../types';
 
 interface UserHeaderProps {
@@ -28,11 +27,8 @@ export const UserHeader: React.FC<UserHeaderProps> = ({
             </div>
           </div>
 
-          {/* Right side - Refresh button, User info and logout */}
+          {/* Right side - User info and logout */}
           <div className="flex items-center space-x-4">
-            {/* Global Refresh Button */}
-            <GlobalRefreshButton />
-            
             <div className="flex items-center space-x-3">
               <UserCircleIcon className="h-8 w-8 text-gray-400" />
               <div className="hidden sm:block">
