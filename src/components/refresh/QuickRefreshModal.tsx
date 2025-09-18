@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Modal } from '../ui/Modal';
 import { Button } from '../ui/Button';
-import { MultiSelect, MultiSelectOption } from '../ui/MultiSelect';
+import { MultiSelect } from '../ui/MultiSelect';
 import { Icon } from '../ui/Icon';
 import { LoadingSpinner } from '../ui/LoadingSpinner';
 import { useRefresh } from '../../hooks/useRefresh';
 import type { RefreshTarget, ConnectionType, RefreshTargetOption, RefreshConnection } from '../../types';
+
+interface MultiSelectOption {
+  value: string;
+  label: string;
+}
 
 interface QuickRefreshModalProps {
   isOpen: boolean;
