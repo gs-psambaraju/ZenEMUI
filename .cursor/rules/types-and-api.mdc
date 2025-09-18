@@ -1,0 +1,11 @@
+---
+globs: *.ts,*.tsx
+description: Types and API usage guidance
+---
+## Types and API Guidance
+
+- Import shared types from `src/types/index.ts`. Do not redeclare `LoginRequest`, `LoginResponse`, `StatusResponse`, or domain types locally.
+- For pagination, import `PageResponse<T>` from `services/api`.
+- Use `apiService` methods for network calls. If a new endpoint is needed, add a well-typed method to `services/api.ts` instead of using `fetch` inline.
+- Convert server keys to camelCase via `toCamelCaseKeys` from `utils/case` inside `apiService` methods only.
+- Handle auth tokens via `apiService.setToken/getToken/clearToken`. Do not access `localStorage` directly.

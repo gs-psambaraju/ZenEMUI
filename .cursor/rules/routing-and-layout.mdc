@@ -1,0 +1,11 @@
+---
+globs: src/App.tsx,src/components/layout/*.tsx,src/pages/*.tsx
+description: Routing, layout, and navigation conventions
+---
+## Routing and Layout
+
+- Routes are defined in `src/App.tsx` using `ROUTES` from `utils/constants.ts`.
+- Use `components/auth/ProtectedRoute` to guard authenticated pages.
+- Page layout should use `components/layout/SidebarLayout` which renders the nav, header, and main content.
+- Sidebar icons should be Heroicons (outline) and passed as components via the `navItems` list.
+- For navigation links, use `NavLink` to get active state styling.

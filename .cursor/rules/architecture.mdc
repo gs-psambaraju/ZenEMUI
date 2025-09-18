@@ -1,0 +1,40 @@
+---
+alwaysApply: true
+---
+## ZenEM UI Architecture and Conventions
+
+- Main app entry is `src/main.tsx`, which wraps `App` with `ToastProvider`.
+- Routing is defined in `src/App.tsx` using `react-router-dom`. Protected routes are guarded by `components/auth/ProtectedRoute.tsx`.
+- Shared UI primitives live in `src/components/ui/` and should be reused across pages.
+- Use `apiService` from `src/services/api.ts` for all network calls. Do not call `fetch` directly.
+- Use `ENV.API_BASE_URL` from `src/utils/env.ts`. Avoid `API_BASE_URL` in `src/utils/constants.ts` (kept only for backward compatibility).
+- Shared types are centralized in `src/types/index.ts`. Avoid redefining interfaces locally.
+
+### Icons
+- Use the central `components/ui/Icon.tsx` which maps string names to Heroicons.
+- Prefer passing `name` to `Icon` and use `IconButton` for small action buttons.
+- If you need a new icon, extend the `iconMap` within `Icon.tsx` only.
+
+### Toasts
+- Use `useToast()` from `components/ui/Toast` for notifications. Do not use page-scoped `ToastNotification` components (removed).
+- The `ToastProvider` is already mounted in `main.tsx`.
+
+### Types and API
+- Use `PageResponse<T>` re-exported from `services/api.ts` when paginating.
+- Reuse `LoginRequest`, `LoginResponse`, and domain types from `types/index.ts`.
+- Do not duplicate `StatusResponse` or other types; import them instead.
+
+### State and Hooks
+- Use `hooks/useAuth.ts` for authentication state and `hooks/useStatus.ts` for dashboard data.
+- Avoid accessing `localStorage` directly; use `apiService` token helpers and `AUTH_TOKEN_KEY`/`USER_DATA_KEY` from `utils/constants.ts`.
+
+### Styling
+- TailwindCSS is used for styling; prefer utility classes and existing UI primitives (`Button`, `Input`, `Card`, `Modal`, `LoadingSpinner`).
+
+### File Structure
+- Pages: `src/pages/`
+- Components: `src/components/`
+- Hooks: `src/hooks/`
+- Services: `src/services/`
+- Types: `src/types/`
+- Utils: `src/utils/`

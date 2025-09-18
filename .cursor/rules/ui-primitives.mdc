@@ -1,0 +1,12 @@
+---
+globs: src/components/ui/*.tsx
+description: UI primitives usage and conventions
+---
+## UI Primitives
+
+- Prefer using `Button`, `Input`, `Card`, `Modal`, `LoadingSpinner`, `SingleSelect`, `MultiSelect`.
+- `Button` has variants: `primary` (default), `secondary`, `outline`.
+- `Modal` supports sizes: `sm`, `md`, `lg`, `xl`, `large`. Prefer `xl` for wizards.
+- `Icon` maps string names to Heroicons; extend `iconMap` in `Icon.tsx` to add new icons.
+- Notifications: use `useToast()` from `components/ui/Toast`.
+- Error handling: wrap top-level routes with `components/ui/ErrorBoundary` (already done in `App.tsx`).
